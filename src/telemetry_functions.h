@@ -18,7 +18,7 @@ std::string get_ip() {
 	} catch (...) {
 
 		try {
-			curlpp::options::Url("https://www.google.com/");
+			curlpp::options::Url("https://www.google.com/"); // FIXME: do we assume google is the standard for being connected to internet?
 		} catch (...) {
 			return "no connection";
 		}
@@ -48,7 +48,6 @@ std::string get_ramusage() {
 	std::getline(memusageFile, bloat);
 
 	memusageFile >> bloat >> available >> unit;
-
 	precentage = (float)(total - available) / (float)total;
 
 	memusageFile.close();

@@ -11,8 +11,8 @@ bool show_date = true;
 bool show_time = true;
 
 bool have_separator = true;
-std::string separator_color = "#201E50";
-std::string separator = "abc";
+std::string separator_color = "#564787";
+std::string separator = "➤";
 
 const char timeformat[] = "%Y-%m-%d";
 
