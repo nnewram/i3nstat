@@ -14,7 +14,7 @@ std::vector<Telemetry> telemetries {
 	Telemetry {"connected", config::show_ip,   connected_color, get_connected, 1s   },
 	Telemetry {"ram",       config::show_ram,  ram_color,       get_ramusage,  3s   },
 	Telemetry {"hdd",       config::show_hdd,                   get_hddusage,  10s  },
-	Telemetry {"date",      config::show_date, "#515151",       get_date,      60s  },
+	Telemetry {"date",      config::show_date, config::fine,    get_date,      60s  },
 	Telemetry {"time",      config::show_time,                  get_time,      1s   }
 };
 

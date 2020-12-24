@@ -2,10 +2,10 @@
 
 std::string ip_color(std::string ip) {
 	if (ip == "no connection")
-		return "#FF0000";
+		return config::bad;
 	else if (ip == "unreachable")
-		return "#0000FF";
-	return "#00FF00";
+		return config::fine;
+	return config::ok;
 }
 
 std::string ram_color(std::string ram) {
@@ -14,18 +14,18 @@ std::string ram_color(std::string ram) {
 	
 	switch (p) {
 		case 0 ... 50:
-			return "#00FF00";
+			return config::ok;
 		case 51 ... 80:
-			return "#0000FF";
+			return config::fine;
 	}
 
-	return "#FF0000";
+	return config::bad;
 }
 
 std::string connected_color(std::string status) {
 	if (status == "✔️")
-		return "#00FF00";
-	return "#FF0000";
+		return config::ok;
+	return config::bad;
 }
 
 std::string separator_color(std::string sep) {

@@ -7,4 +7,4 @@ build: src/i3nstatus.cpp
 
 install: build
 	-rm /usr/bin/i3status
-	cp i3status /usr/bin/
+	cp i3nstatus /usr/bin/i3status
