@@ -62,13 +62,17 @@ std::string get_hddusage() {
 std::string get_date() {
 	std::time_t now = std::time(nullptr);
 	std::tm *localtime = std::localtime(&now);
-	char strtime[5 + 1 + 2 + 1 + 2 + 1] = {0};
-	std::strftime(strtime, sizeof(strtime), config::timeformat, localtime);
+	char strtime[100] = {0};
+	std::strftime(strtime, sizeof(strtime), config::dateformat, localtime);
 	return std::string(strtime);
 }
 
 std::string get_time() {
-	return "13:37";
+	std::time_t now = std::time(nullptr);
+	std::tm *localtime = std::localtime(&now);
+	char strtime[100] = {0};
+	std::strftime(strtime, sizeof(strtime), config::timeformat, localtime);
+	return std::string(strtime);
 }
 
 std::string get_connected() {
