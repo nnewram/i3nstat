@@ -56,7 +56,9 @@ public:
 		if (!teleClickFunc || button != 1)
 			return;
 
-		std::swap(teleClickFunc, teleFunc); 
+		std::swap(teleClickFunc, teleFunc);
+		
+		cache = teleFunc();
 	}
 
 	const bool wants_sep() {
