@@ -9,7 +9,10 @@ private:
 	const std::string teleName;
 	const std::string teleColor;
 	const std::function<std::string(std::string)> teleColorFunction;
-	const std::function<std::string(void)> teleFunc;
+	
+	std::function<std::string(void)> teleClickFunc; 
+	std::function<std::string(void)> teleFunc;
+	
 	std::chrono::duration<double> teleInterval;
 	std::chrono::time_point<std::chrono::system_clock> lastUsed;
 	std::string cache;
@@ -17,14 +20,14 @@ private:
 	const bool shouldShow;
 	const bool teleWantsSep;
 public:
-	Telemetry(const std::string& name, const bool show, const std::function<std::string(void)> func, std::chrono::duration<double> interval, const bool wantsSep = true)
-	: teleName(std::string(name)), shouldShow(show), teleColor("#FFFFFF"), teleColorFunction(nullptr), teleFunc(func), teleInterval(interval), cache(func()), teleWantsSep(wantsSep) {}
+	Telemetry(const std::string& name, const bool show, std::function<std::string(void)> func, std::chrono::duration<double> interval, const bool wantsSep = true, std::function<std::string(void)> click_func=nullptr)
+	: teleName(std::string(name)), shouldShow(show), teleClickFunc(click_func), teleColor("#FFFFFF"), teleColorFunction(nullptr), teleFunc(func), teleInterval(interval), cache(func()), teleWantsSep(wantsSep) {}
 	
-	Telemetry(const std::string& name, const bool show, const std::string& color, const std::function<std::string(void)> func, std::chrono::duration<double> interval, const bool wantsSep = true)
-	: teleName(name), shouldShow(show), teleColor(color), teleFunc(func), teleColorFunction(nullptr), teleInterval(interval), cache(func()), teleWantsSep(wantsSep) {}
+	Telemetry(const std::string& name, const bool show, std::string& color, const std::function<std::string(void)> func, std::chrono::duration<double> interval, const bool wantsSep = true, std::function<std::string(void)> click_func=nullptr)
+	: teleName(name), shouldShow(show), teleClickFunc(click_func), teleColor(color), teleFunc(func), teleColorFunction(nullptr), teleInterval(interval), cache(func()), teleWantsSep(wantsSep) {}
 
-	Telemetry(const std::string& name, const bool show, const std::function<std::string(std::string)> colorfunc, const std::function<std::string(void)> func, std::chrono::duration<double> interval, const bool wantsSep = true)
-	: teleName(name), shouldShow(show), teleColor(""), teleFunc(func), teleColorFunction(colorfunc), teleInterval(interval), cache(func()), teleWantsSep(wantsSep) {}
+	Telemetry(const std::string& name, const bool show, std::function<std::string(std::string)> colorfunc, const std::function<std::string(void)> func, std::chrono::duration<double> interval, const bool wantsSep = true, std::function<std::string(void)> click_func=nullptr)
+	: teleName(name), shouldShow(show), teleClickFunc(click_func), teleColor(""), teleFunc(func), teleColorFunction(colorfunc), teleInterval(interval), cache(func()), teleWantsSep(wantsSep) {}
 
 	const std::string& name() {
 		return teleName;
@@ -47,6 +50,13 @@ public:
 		}
 
 		return cache;
+	}
+
+	void click_event(int button) {
+		if (!teleClickFunc || button != 1)
+			return;
+
+		std::swap(teleClickFunc, teleFunc); 
 	}
 
 	const bool wants_sep() {

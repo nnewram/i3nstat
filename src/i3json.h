@@ -49,6 +49,6 @@ public:
 void initialize() {
 	std::string bruh {""};
 	
-	std::cout << "{ " << strfy("version") << ": " << 1 <<  "}" << std::endl;
+	std::cout << "{ " << strfy("version") << ": " << 1 << ", " << strfy("click_events") << ": " << "true" << "}" << std::endl;
 	std::cout << "[" << std::endl;
 }

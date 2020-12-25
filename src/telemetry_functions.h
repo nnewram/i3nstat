@@ -84,12 +84,15 @@ std::string get_cpu() {
 
 	procstat.close();
 
-	std::string res {"CPU:"};
+	int avgusage = 0;
+
 	for (auto& usage : usages) {
-		res += " " + std::to_string(usage);
+		avgusage += usage;	
 	}
 
-	return res;
+	avgusage /= usages.size();
+
+	return "CPU: " + std::to_string(avgusage) + "%";
 }
 
 std::string get_hddusage() {

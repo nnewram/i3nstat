@@ -18,7 +18,8 @@ bool have_separator = true;
 std::string separator_color = "#564787";
 std::string separator = "➤";
 
-const char *dateformat = "%Y-%m-%d";
-const char *timeformat = "%H:%M:%S";
+const char *dateformat          = "%Y-%m-%d";
+const char *timeformat          = "%H:%M";
+const char *expanded_timeformat = "%H:%M:%S";
 
 }
