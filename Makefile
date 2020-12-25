@@ -1,5 +1,5 @@
 CC = clang++
-CXXLFAGS = -std=c++20 -O2
+CXXLFAGS = -std=c++20
 INCLUDES = -lcurl -lcurlpp
 
 build: src/i3nstatus.cpp

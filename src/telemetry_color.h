@@ -22,6 +22,11 @@ std::string ram_color(std::string ram) {
 	return config::bad;
 }
 
+std::string cpu_color(std::string cpu) {
+	/*switch on the average of the cpus to get the color.*/
+	return config::ok;
+}
+
 std::string connected_color(std::string status) {
 	if (status == "✔️")
 		return config::ok;

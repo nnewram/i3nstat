@@ -7,10 +7,10 @@ std::string ok         = "#2FBF71";
 std::string fine       = "#95A3B3";
 std::string bad        = "#DB162F";
 
-
-bool show_ip = true;
-bool show_ram = true;
-bool show_hdd = true;
+bool show_ip   = true;
+bool show_ram  = true;
+bool show_cpu  = true;
+bool show_hdd  = true;
 bool show_date = true;
 bool show_time = true;
 
@@ -20,4 +20,5 @@ std::string separator = "➤";
 
 const char *dateformat = "%Y-%m-%d";
 const char *timeformat = "%H:%M:%S";
+
 }

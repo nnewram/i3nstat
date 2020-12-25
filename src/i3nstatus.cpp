@@ -13,6 +13,7 @@ std::vector<Telemetry> telemetries {
 	Telemetry {"ip",        config::show_ip,   ip_color,        get_ip,        160s, false /* we dont want a separator between the next element */},
 	Telemetry {"connected", config::show_ip,   connected_color, get_connected, 1s   },
 	Telemetry {"ram",       config::show_ram,  ram_color,       get_ramusage,  3s   },
+	Telemetry {"cpu",       config::show_cpu,  cpu_color,       get_cpu,       1s   },
 	Telemetry {"hdd",       config::show_hdd,                   get_hddusage,  10s  },
 	Telemetry {"date",      config::show_date, config::fine,    get_date,      60s  },
 	Telemetry {"time",      config::show_time,                  get_time,      1s   }

@@ -9,7 +9,7 @@ std::string strfy(const std::string& str) {
 std::string style(bool wants_sep) {
 	wants_sep = wants_sep && config::have_separator;
 
-	return	  strfy("border")                + ": " + strfy(config::background)      + ", "
+	return    strfy("border")                + ": " + strfy(config::background)      + ", "
 		+ strfy("background")            + ": " + strfy(config::background)      + ", "
 		+ strfy("separator")             + ": " + (wants_sep ? "true" : "false") + ", "
 		+ strfy("separator_block_width") + ": " + "0"                            + ", "

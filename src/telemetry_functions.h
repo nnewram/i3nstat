@@ -55,6 +55,43 @@ std::string get_ramusage() {
 	return "RAM: " + std::to_string((int)(100 * precentage)) + "%";
 }
 
+std::string get_cpu() {
+	std::ifstream procstat;
+	procstat.open("/proc/stat");
+	std::vector<int> usages;
+	std::string cpu_name;
+	int sumtime = 0;
+	int idle = 0;
+	int collect = 0;
+	
+	while ((procstat >> cpu_name) && cpu_name != "intr") {
+		sumtime = 0;
+		for (int i = 0; i < 3; i++) {
+			procstat >> collect;
+			sumtime += collect;
+		}
+
+		procstat >> idle;
+		sumtime += idle;
+
+		for (int i = 0; i < 6; i++) {
+			procstat >> collect;
+			sumtime += collect;
+		}
+
+		usages.push_back((int)(100 * (1 - ((float)idle/(float)sumtime))));
+	}
+
+	procstat.close();
+
+	std::string res {"CPU:"};
+	for (auto& usage : usages) {
+		res += " " + std::to_string(usage);
+	}
+
+	return res;
+}
+
 std::string get_hddusage() {
 	return "hdd";
 }
