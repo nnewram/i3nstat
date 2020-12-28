@@ -2,6 +2,9 @@
 #include <string_view>
 #include <functional>
 #include <chrono>
+
+#include "config.h"
+
 using namespace std::chrono_literals;
 
 class Telemetry {
@@ -21,7 +24,7 @@ private:
 	const bool teleWantsSep;
 public:
 	Telemetry(const std::string& name, const bool show, std::function<std::string(void)> func, std::chrono::duration<double> interval, const bool wantsSep = true, std::function<std::string(void)> click_func=nullptr)
-	: teleName(std::string(name)), shouldShow(show), teleClickFunc(click_func), teleColor("#FFFFFF"), teleColorFunction(nullptr), teleFunc(func), teleInterval(interval), cache(func()), teleWantsSep(wantsSep) {}
+	: teleName(std::string(name)), shouldShow(show), teleClickFunc(click_func), teleColor(config::white), teleColorFunction(nullptr), teleFunc(func), teleInterval(interval), cache(func()), teleWantsSep(wantsSep) {}
 	
 	Telemetry(const std::string& name, const bool show, std::string& color, const std::function<std::string(void)> func, std::chrono::duration<double> interval, const bool wantsSep = true, std::function<std::string(void)> click_func=nullptr)
 	: teleName(name), shouldShow(show), teleClickFunc(click_func), teleColor(color), teleFunc(func), teleColorFunction(nullptr), teleInterval(interval), cache(func()), teleWantsSep(wantsSep) {}

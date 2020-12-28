@@ -6,8 +6,9 @@ namespace config {
 
 std::string background = "#101935";
 std::string ok         = "#2FBF71";
-std::string fine       = "#95A3B3";
+std::string fine       = "#2E86AB";
 std::string bad        = "#DB162F";
+std::string white      = "#F9F9F9";
 
 bool show_ip   = true;
 bool show_ram  = true;
@@ -26,7 +27,7 @@ auto time_delay      = 1s;
 
 
 bool have_separator = true;
-std::string separator_color = "#564787";
+std::string separator_color = "#6883BA";
 std::string separator = "➤";
 
 const char *dateformat          = "%Y-%m-%d";
