@@ -6,7 +6,7 @@ namespace config {
 
 std::string background = "#101935";
 std::string ok         = "#2FBF71";
-std::string fine       = "#2E86AB";
+std::string fine        = "#2E86AB";
 std::string bad        = "#DB162F";
 std::string white      = "#F9F9F9";
 
