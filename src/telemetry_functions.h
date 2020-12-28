@@ -1,3 +1,4 @@
+#pragma once
 #include <curlpp/cURLpp.hpp>
 #include <curlpp/Options.hpp>
 #include <sstream>
@@ -6,6 +7,8 @@
 #include <string_view>
 
 #include <ctime>
+
+#include <sys/statvfs.h>
 
 #include "config.h"
 
@@ -96,7 +99,13 @@ std::string get_cpu() {
 }
 
 std::string get_hddusage() {
-	return "hdd";
+	struct statvfs stat;
+
+	if (statvfs(config::root, &stat) != 0) {
+		return "ERR";
+	}
+
+	return "HDD: " + std::to_string((int)(100 * (float)(stat.f_blocks - stat.f_bfree) / (float)(stat.f_blocks - stat.f_bfree + stat.f_bavail))) + " %";
 }
 
 std::string get_date() {

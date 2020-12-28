@@ -1,4 +1,6 @@
+#pragma once
 #include "config.h"
+#include "telemetry_functions.h"
 
 std::string ip_color(std::string ip) {
 	if (ip == "no connection")
@@ -25,6 +27,27 @@ std::string ram_color(std::string ram) {
 std::string cpu_color(std::string cpu) {
 	/*switch on the average of the cpus to get the color.*/
 	return config::ok;
+}
+
+std::string hdd_color(std::string hdd) {
+	if (hdd == "ERR")
+		return config::bad;
+	
+	if (hdd.find("GB") != std::string::npos) {
+		hdd = get_hddusage();
+	}
+
+	auto pos = hdd.find(" ");
+	int p = std::stoi(hdd.substr(pos, hdd.find("%") - pos));
+	
+	switch (p) {
+		case 0 ... 70:
+			return config::ok;
+		case 71 ... 95:
+			return config::ok;
+	}
+
+	return config::bad;
 }
 
 std::string connected_color(std::string status) {

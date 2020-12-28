@@ -1,6 +1,8 @@
 #pragma once
 #include "config.h"
 
+#include <sys/statvfs.h>
+
 std::string cpu_expanded() {
 	std::ifstream procstat;
 	procstat.open("/proc/stat");
@@ -44,4 +46,14 @@ std::string time_expanded() {
 	char strtime[100] = {0};
 	std::strftime(strtime, sizeof(strtime), config::expanded_timeformat, localtime);
 	return std::string(strtime);
+}
+
+std::string hdd_expanded() {
+	struct statvfs stat;
+	
+	if (statvfs(config::root, &stat) != 0) {
+		return "ERR";
+	}
+
+	return "HDD: " + std::to_string((int)((float)(stat.f_bsize * stat.f_bavail) / (float)(1024 * 1024 * 1024))) + " GB";
 }

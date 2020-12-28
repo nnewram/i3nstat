@@ -1,5 +1,5 @@
 CC = clang++
-CXXLFAGS = -std=c++20
+CXXLFAGS = -std=c++20 -fsanitize=address
 INCLUDES = -lcurl -lcurlpp -lpthread
 
 build: src/i3nstatus.cpp
