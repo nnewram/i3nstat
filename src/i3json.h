@@ -2,6 +2,8 @@
 #include <string_view>
 #include "config.h"
 
+#include <csignal>
+
 std::string strfy(const std::string& str) {
 	return "\"" + str + "\"";
 }
@@ -46,9 +48,13 @@ public:
 	}
 };
 
+void i3isutterlystupidliterallytooklikeaweektofindthisshit(int fuckyou) {;}
+
 void initialize() {
 	std::string bruh {""};
 	
 	std::cout << "{ " << strfy("version") << ": " << 1 << ", " << strfy("click_events") << ": " << "true" << "}" << std::endl;
 	std::cout << "[" << std::endl;
+
+	signal(SIGUSR1, i3isutterlystupidliterallytooklikeaweektofindthisshit);
 }
